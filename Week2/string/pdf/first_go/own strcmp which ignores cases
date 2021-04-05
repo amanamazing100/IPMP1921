@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int ic_strcmp(string a, string b){
+	int i=0;
+	for(int i=0;i<a.length();i++)
+	{
+		if(a[i]>=97 && a[i]<=122)
+			a[i]-=32;
+	}
+	for(int i=0;i<b.length();i++)
+	{
+		if(b[i]>=97 && b[i]<=122)
+			b[i]-=32;
+	}
+	i=0;
+	cout<<a<<" "<<b<<endl;
+	while(a[i] && b[i]){
+		if(a[i]==b[i]){
+			i++;
+			continue;
+		}
+		break;
+	}
+	if(a[i]==b[i]||(a[i]=='\0'&&b[i]=='\0'))
+		return 0;
+	if(a[i]<b[i]){
+		cout<<a[i]<<" "<<b[i]<<endl;
+	return -1;}
+
+	return 1;
+}
+int main()
+{
+    cout<<"ret: "<<ic_strcmp("Geeks", "apple") <<endl;
+    cout<<"ret: "<<ic_strcmp("", "ABCD")<<endl;
+    cout<<"ret: "<<ic_strcmp("A", "A")<<endl;
+    cout<<"ret: "<<ic_strcmp("ABCD", "abcdEghe")<<endl;
+    cout<<"ret: "<<ic_strcmp("GeeksForGeeks", "gEEksFORGeEKs")<<endl;
+    cout<<"ret: "<<ic_strcmp("GeeksForGeeks", "geeksForGeeks")<<endl;
+    return 0;
+}
