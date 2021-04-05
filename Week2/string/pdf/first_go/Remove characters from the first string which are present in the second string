@@ -1,0 +1,19 @@
+int main(){
+	string s1, s2;
+	s1="abcd";
+  s2="bc";
+	unordered_map<char, int> count;
+	for(int i=0;i<s2.length();i++)
+		count[s2[i]]++;
+	int i1=0, i2=0;
+	while(i2<s1.length()){
+		if(count[s1[i2]]==0){
+          cout<<i1<<endl;
+			s1[i1++]=s1[i2];
+		}
+		i2++;
+	}
+  s1=s1.substr(0, i1);
+	cout<<s1;
+	return 0;
+}
