@@ -1,0 +1,27 @@
+// CPP program to implement run length encoding
+#include <iostream>
+#include <string>
+using namespace std;
+
+void printRLE(string str)
+{
+	/*
+		iterate the string from beginning for every new character append to result string
+		count the number util end or new char is reached
+	*/
+	int n=str.length();
+	for(int i=0;i<n;i++){
+		int count=1;
+		while(i<n && str[i]==str[++i]){
+			count++;
+		}
+		cout<<str[i-1]<<count;
+	}
+}
+
+int main()
+{
+	string str = "wwwwaaadexxxxxxywww";
+	printRLE(str);
+	return 0;
+}
