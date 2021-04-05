@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int i=0;
+        while(s[i]==' ')
+            i++;
+        string temp;
+        stack<string>store;
+        while(s[i]!='\0'){
+            if(s[i]==' ')
+            {
+                store.push(temp);
+                temp="";
+                while(s[i]==' ')
+                    i++;
+                continue;
+            }
+            if(s[i]=='\0')
+                break;
+            temp+=s[i];
+            i++;
+        }
+        if(temp.length()!=0)
+        {
+            store.push(temp);
+            temp="";
+        }
+        while(!store.empty()){
+            temp+=store.top();
+            if(store.size()!=1)
+            temp+=" ";
+            store.pop();
+        }
+        return temp;
+    }
+};
