@@ -1,0 +1,17 @@
+ bool isAnagram(string s, string t) {
+       if(s.length()!=t.length())
+           return false;
+        int *count1=(int *)calloc(sizeof(int), 256);
+        int *count2=(int *)calloc(sizeof(int), 256);
+        for(int i=0;i<s.length();i++)
+            count1[s[i]]++;
+        for(int i=0;i<t.length();i++)
+            count2[t[i]]++;
+        int i=0;
+        for(i;i<256;i++)
+            if(count1[i]!=count2[i])
+                break;
+        if(i<256)
+            return false;
+        return true;
+    }
