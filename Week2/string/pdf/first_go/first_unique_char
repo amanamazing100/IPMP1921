@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int *char_count(string s){
+        int *arr=(int *)calloc(sizeof(int), 256);
+        for(int i=0;i<s.length();i++){
+            arr[s[i]]++;
+        }
+        return arr;
+    }
+    int firstUniqChar(string s) {
+     int *arr=char_count(s);
+        for(int i=0;i<s.length();i++){
+            if(arr[s[i]]==1)
+                return i;
+        }
+        return -1;
+    }
+};
