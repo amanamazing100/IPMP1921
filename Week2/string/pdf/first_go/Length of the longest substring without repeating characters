@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int longestUnique(string str)
+{
+	int n = str.size();
+
+	int length=0;
+	vector<int> lastIndex(256, -1);
+	int start = 0;
+	for (int end = 0; end < n; end++) {
+
+		start = max(start, lastIndex[str[end]] + 1);
+
+		length = max(length, end - start + 1);
+
+		// Update last index of j.
+		lastIndex[str[end]] = end;
+	}
+	return end;
+}
