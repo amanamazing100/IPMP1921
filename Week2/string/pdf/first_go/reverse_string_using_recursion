@@ -1,0 +1,16 @@
+string Solution::reverseString(string s) {
+        if(s.length()==1)
+        {
+            //cout<<s[0];
+            string ans;
+            ans+=s[0];
+            return ans;
+        }
+        string st=s.substr(1);
+        string ans=reverseString(st);
+        
+        return ans+s[0];
+            
+    
+
+}
