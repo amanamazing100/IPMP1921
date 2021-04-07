@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void printUnion(int arr1[], int arr2[], int m, int n){
+	int i=0, j=0;
+	for(i, j; i<m&&j<n;){
+		if(arr1[i]>arr2[j]){
+			cout<<arr2[j++]<<" ";
+			continue;
+		}
+		if(arr1[i]<arr2[j]){
+			cout<<arr1[i++]<<" ";
+			continue;
+		}
+		cout<<arr1[i++]<<" ";
+		j++;
+	}
+	if(i<m){
+		while(i<m)
+			cout<<arr1[i++]<<" ";
+	}
+	if(j<n){
+		while(j<n)
+			cout<<arr2[j++]<<" ";
+	}
+	return;
+}
+void printIntersection(int arr1[], int arr2[], int m, int n){
+	int i=0, j=0;
+	for(i, j; i<m&&j<n;){
+		if(arr1[i]>arr2[j]){
+			//cout<<arr2[j++]<<" ";
+          j++;
+			continue;
+		}
+		if(arr1[i]<arr2[j]){
+			//cout<<arr1[i++]<<" ";
+			i++;
+          continue;
+		}
+		cout<<arr1[i++]<<" ";
+		j++;
+	}
+	return;
+}
