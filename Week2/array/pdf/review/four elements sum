@@ -1,0 +1,23 @@
+
+void findFourElements(int arr[], int n, int x){
+	unordered_map<int, pair<int, int>> m;
+	for(int i=0;i<n-1;i++){
+		for(int j=i+1;j<n;j++){
+			m[arr[i]+arr[j]]={arr[i], arr[j]};
+		}
+	}
+
+	for(int i=0;i<n-1;i++){
+		for(int j=i+1;j<n;j++){
+		int sum=arr[i]+arr[j];
+		if(m.find(x-sum)!=m.end()){
+			pair<int, int> p=m[x-sum];
+			if(p.first!=arr[i]&&p.first!=arr[j]&&
+				p.second!=arr[i]&&p.second!=arr[j])
+            {cout<<arr[i]<<" "<<arr[j]<<" "<<p.first<<" "<<p.second;
+		return;}
+		}
+		}
+	}
+	return;
+}
