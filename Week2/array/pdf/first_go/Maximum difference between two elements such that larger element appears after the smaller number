@@ -1,0 +1,14 @@
+int maxDiff(int arr[], int arr_size){
+	int min=0;
+	int diff=0;
+	for(int i=1;i<arr_size;i++){
+		if(arr[i]<arr[min]){
+			min=i;
+			continue;
+		}
+		if(arr[i]-arr[min]>diff){
+			diff=arr[i]-arr[min];
+		}
+	}
+	return diff;
+}
