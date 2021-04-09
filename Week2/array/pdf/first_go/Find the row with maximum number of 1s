@@ -1,0 +1,17 @@
+void rowWithMaxs(bool mat[R][C]){
+	int i;
+	for(i=0;i<C;i++){
+		if(mat[0][i]==1)
+			break;
+	}
+	int j, maxj=0;
+	for(j=1;j<R;j++){
+		if(mat[j][i]==0)
+			continue;
+		while(mat[j][i]==1){i--;if(i==0)break;}
+		if(!(i==0 && mat[j][i]==1))i++;
+		maxj=j;
+	}
+	cout<<maxj;
+	return;
+}
