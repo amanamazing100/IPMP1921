@@ -1,0 +1,18 @@
+int cmp(int a, int b){
+	return abs(a) < abs(a);
+}
+
+
+void findMinSum(int arr[], int n){
+	sort(arr, arr+n, cmp);
+	int min=INT_MAX, x;
+	for(int i=1;i<n;i++){
+		if(abs(arr[i-1]+arr[i])<min){
+			x=i;
+			min=abs(arr[i-1]+arr[i]);
+			continue;
+		}
+	}
+	cout<<arr[x-1]<<" "<<arr[x];
+	return;
+}
