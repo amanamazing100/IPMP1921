@@ -1,0 +1,20 @@
+
+int maxSubArraySum(int a[], int n)
+{
+	int start=0, end=0,s =0, max_=0, max_now=0;
+	for(int i=0;i<n;i++){
+		max_now+=a[i];
+		if(max_<max_now){
+			start=s;
+          max_=max_now;
+			end=i;
+
+		}
+		if(max_now<0){
+			max_now=0;
+			s=i+1;
+		}
+	}
+	cout<<max_;
+	return max_; 
+}
