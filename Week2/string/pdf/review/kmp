@@ -1,0 +1,44 @@
+void findPrefix(string str2, int m, int prefArray[]) {
+   int length = 0;
+   prefArray[0] = 0;    
+
+   for(int i = 1; i<m; i++) {
+      if(str2[i] == str2[length]) {
+         length++;
+         prefArray[i] = length;    
+      }else {
+         if(length != 0) {
+            length = prefArray[length - 1];
+            i--;    
+         }else
+            prefArray[i] = 0;
+      }
+   }
+}
+
+void kmp(string str1, string str2, int *locArray, int &loc) {
+   int n, m, i = 0, j = 0;
+   n = str1.length();
+   m = str2.length();
+   int prefix[m];  
+   findPrefix(str2, m, prefix);
+   loc = 0;
+
+   while(i < n) {
+      if(str1[i] == str2[j]) {
+         i++;
+         j++;
+      }
+
+      if(j == m) {
+         locArray[loc] = i-j;      
+         loc++;
+         j = prefix[j-1];   
+      }else if(i < n && str2[j] != str1[i]) {
+         if(j != 0)
+            j = prefix[j-1];
+         else
+            i++;
+      }
+   }
+}
