@@ -1,0 +1,11 @@
+void delete(Node *head){
+  Node *temp=head, *next=head;
+  while(temp!=NULL){
+    next=temp->next;
+    free(temp);
+    temp=next;
+  }
+  head=NULL;
+  return;
+}
+  
