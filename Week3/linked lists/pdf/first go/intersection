@@ -1,0 +1,19 @@
+list *intersection(list *l1, list *l2){
+  unordered_map<int, int> map;
+  list *temp=l1;
+  while(temp!=NULL){
+    map[temp->val]++;
+    temp=temp->next;
+  }
+  list *temp=l2;
+  while(temp!=NULL){
+    map[temp->val]++;
+    temp=temp->next;
+  }
+  list *res=NULL;
+  for(auto i=map.begin();i<map.end();i++){
+    if(i.second==1)
+      res.insert(i.first);
+  }
+  return res;
+}
