@@ -1,0 +1,72 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        int n=1;
+        ListNode *temp=head;
+        while(temp->next!=NULL){
+            temp=temp->next;
+            n++;
+        }
+        if(k>n)
+            return head;
+        if(k==1||k==n)
+        {
+            ListNode *t4=head;
+            while(t4->next!=NULL)
+                t4=t4->next;
+            int t=head->val;
+            head->val=temp->val;
+            temp->val=t;
+            return head;
+        }
+        if(2*k-1==n)
+            return head;
+        if(2*k==n){
+            temp=head;
+            for(int i=1;i<k;i++)
+                temp=temp->next;
+            ListNode *temp2=temp->next;
+            int t=temp->val;
+            temp->val=temp2->val;
+            temp2->val=t;
+            return head;
+        }
+        if(2*k==n+2){
+            temp=head;
+            for(int i=1;i<k-1;i++)
+                temp=temp->next;
+            int t=temp->val;
+            temp->val=temp->next->val;
+            temp->next->val=t;
+            return head;
+        }
+        ListNode *temp2=head;temp=head;
+        int lastk=n-k+1;
+        for(int i=1;i<k;i++)
+            temp=temp->next;
+        for(int i=1;i<lastk;i++)
+            temp2=temp2->next;
+        ListNode *t1=head;
+        ListNode *t2=head;
+        while(t1->next!=temp)
+            t1=t1->next;
+        while(t2->next!=temp2)
+            t2=t2->next;
+        ListNode* temp3=temp2->next;
+        temp2->next=temp->next;
+        t1->next=temp2;
+        t2->next=temp;
+        temp->next=temp3;
+        return head;
+    }
+};
